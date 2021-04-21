@@ -1,6 +1,7 @@
 package com.rudecrab.ssm.service;
 
 import com.rudecrab.ssm.entity.User;
+import com.rudecrab.ssm.entity.vo.UserInfoVo;
 
 import java.util.List;
 
@@ -16,4 +17,10 @@ public interface UserService {
      * @return 受影响的条数
      */
     int insert(User user);
+
+    /**
+     * 根据用户id查询用户地址信息集合
+     * @return
+     */
+    List<UserInfoVo> getUserAddressListByUserId(int userId);
 }

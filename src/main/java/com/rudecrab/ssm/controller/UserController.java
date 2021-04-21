@@ -1,6 +1,7 @@
 package com.rudecrab.ssm.controller;
 
 import com.rudecrab.ssm.entity.User;
+import com.rudecrab.ssm.entity.vo.UserInfoVo;
 import com.rudecrab.ssm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,5 +28,11 @@ public class UserController {
     @ResponseBody
     public List<User> getList() {
         return userService.getAll();
+    }
+
+    @GetMapping("/getUserJson")
+    @ResponseBody
+    public List<UserInfoVo> getUserList() {
+        return userService.getUserAddressListByUserId(1);
     }
 }
