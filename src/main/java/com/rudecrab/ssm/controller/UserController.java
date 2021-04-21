@@ -30,6 +30,10 @@ public class UserController {
         return userService.getAll();
     }
 
+    /**
+     * wwx
+     * @return
+     */
     @GetMapping("/getUserJson")
     @ResponseBody
     public List<UserInfoVo> getUserList() {
