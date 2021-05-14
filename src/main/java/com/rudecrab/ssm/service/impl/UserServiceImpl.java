@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,7 +23,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAll() {
-        return userMapper.selectAll();
+
+       // return userMapper.selectAll();
+        User info = userMapper.selectUser(1);
+        List<User> list =  new ArrayList<User>();
+        list.add(info);
+        return  list;
     }
 
     @Override

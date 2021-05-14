@@ -1,6 +1,7 @@
 package com.rudecrab.ssm.mapper;
 
 import com.rudecrab.ssm.entity.User;
+import com.rudecrab.ssm.entity.UserAddress;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,4 +19,12 @@ public interface UserMapper {
      * @return 受影响的条数
      */
     int add(User user);
+
+   /* User selectUser(int id);
+
+    UserAddress selectAdress(int id);*/
+
+    User selectUser(int id);
+
+    UserAddress selectAddressByUser(int userId);
 }

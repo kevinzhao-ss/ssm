@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.rudecrab.ssm.mapper.UserMapper">
     <!--开启缓存-->
-    <cache/>
+   <!-- <cache/>-->
 
     <!--从数据库中查询出所有的User对象-->
     <select id="selectAll" resultType="com.rudecrab.ssm.entity.User">
@@ -12,4 +12,38 @@
     <insert id="add" parameterType="com.rudecrab.ssm.entity.User" useGeneratedKeys="true" keyProperty="id">
         insert into user (ID, NAME, PASSWORD) VALUES (#{id}, #{name}, #{password})
     </insert>
+
+
+   <!-- <resultMap type="com.rudecrab.ssm.entity.User" id="UserResult">
+        <association property="address" select="selectAdress" column="address" javaType="com.rudecrab.ssm.entity.UserAddress"/>
+    </resultMap>
+
+    <select id="selectUser" parameterType="int" resultMap="UserResult">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="selectAdress" parameterType="int" resultType="com.rudecrab.ssm.entity.UserAddress">
+        select * from user_address where user_id = #{id}
+    </select>-->
+
+
+
+
+    <!-- 来自BlogMapper.xml文件 -->
+    <resultMap type="com.rudecrab.ssm.entity.User" id="UserResult">
+        <id column="id" property="id"/>
+        <collection property="address" select="selectAddressByUser" column="id" ofType="com.rudecrab.ssm.entity.UserAddress"></collection>
+    </resultMap>
+
+    <resultMap type="com.rudecrab.ssm.entity.UserAddress" id="addressResult">
+        <association property="user" javaType="com.rudecrab.ssm.entity.User" column="user" select="selectUser"/>
+    </resultMap>
+
+    <select id="selectUser" parameterType="int" resultMap="UserResult">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="selectAddressByUser" parameterType="int" resultMap="addressResult">
+        select * from user_address where user_id= #{userId}
+    </select>
 </mapper>

@@ -39,4 +39,7 @@ public class UserController {
     public List<UserInfoVo> getUserList() {
         return userService.getUserAddressListByUserId(1);
     }
+
+
+
 }

@@ -9,6 +9,7 @@
  */
 package com.rudecrab.ssm.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -18,7 +19,8 @@ import java.util.Date;
  * @version V0.1.0
  * @Enn.Howmuch.MybatisGenerator
  */
-public class UserAddress {
+public class UserAddress implements Serializable {
+
     /**
      * @Department 主键
      * @DatabaseTable user_address
